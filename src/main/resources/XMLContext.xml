@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:MyApp.properties"/>
+
+    <context:component-scan base-package="org.experiment.data"/>
+
+    <bean class="org.experiment.JillBeanPostProcessor"/>
+
+    <bean id="studentA"
+          class="org.experiment.data.Student"
+          init-method="init"
+          scope="prototype">
+        <constructor-arg name="name" value="${studentA.name}"/>
+        <constructor-arg name="mapGradesOfStudent">
+            <map>
+                <entry key="history" value="${studentA.history.estimation}"/>
+                <entry key="biology" value="${studentA.biology.estimation}"/>
+                <entry key="math" value="${studentA.math.estimation}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="studentB"
+          class="org.experiment.data.Student"
+          init-method="init"
+          scope="prototype">
+        <constructor-arg name="name" value="${studentB.name}"/>
+        <constructor-arg name="mapGradesOfStudent">
+            <map>
+                <entry key="history" value="${studentB.history.estimation}"/>
+                <entry key="biology" value="${studentB.biology.estimation}"/>
+                <entry key="math" value="${studentB.math.estimation}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="studentC"
+          class="org.experiment.data.Student"
+          init-method="init"
+          scope="prototype">
+        <constructor-arg name="name" value="${studentC.name}"/>
+        <constructor-arg name="mapGradesOfStudent">
+            <map>
+                <entry key="history" value="${studentC.history.estimation}"/>
+                <entry key="biology" value="${studentC.biology.estimation}"/>
+                <entry key="math" value="${studentC.math.estimation}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
